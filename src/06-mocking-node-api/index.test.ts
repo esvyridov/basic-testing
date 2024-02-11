@@ -98,7 +98,7 @@ describe('readFileAsynchronously', () => {
 
     (join as jest.Mock).mockImplementation(joinMock);
     (existsSync as jest.Mock).mockReturnValue(true);
-    (readFile as jest.Mock).mockResolvedValue('Hello!')
+    (readFile as jest.Mock).mockResolvedValue('Hello!');
 
     expect(await readFileAsynchronously(pathToFile)).toBe('Hello!');
   });

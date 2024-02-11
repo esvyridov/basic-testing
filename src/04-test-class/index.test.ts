@@ -15,7 +15,9 @@ describe('BankAccount', () => {
     const initialBalance = 1000;
     const bankAccount = getBankAccount(initialBalance);
 
-    expect(() => bankAccount.withdraw(2000)).toThrow(`Insufficient funds: cannot withdraw more than ${initialBalance}`);
+    expect(() => bankAccount.withdraw(2000)).toThrow(
+      `Insufficient funds: cannot withdraw more than ${initialBalance}`,
+    );
   });
 
   test('should throw error when transferring more than balance', () => {
@@ -23,13 +25,17 @@ describe('BankAccount', () => {
     const bankAccount = getBankAccount(initialBalance);
     const anotherBankAccount = getBankAccount(0);
 
-    expect(() => bankAccount.transfer(2000, anotherBankAccount)).toThrow(`Insufficient funds: cannot withdraw more than ${initialBalance}`);
+    expect(() => bankAccount.transfer(2000, anotherBankAccount)).toThrow(
+      `Insufficient funds: cannot withdraw more than ${initialBalance}`,
+    );
   });
 
   test('should throw error when transferring to the same account', () => {
     const bankAccount = getBankAccount(1000);
 
-    expect(() => bankAccount.transfer(100, bankAccount)).toThrow('Transfer failed');
+    expect(() => bankAccount.transfer(100, bankAccount)).toThrow(
+      'Transfer failed',
+    );
   });
 
   test('should deposit money', () => {
@@ -48,7 +54,9 @@ describe('BankAccount', () => {
     const bankAccount = getBankAccount(1000);
     const anotherBankAccount = getBankAccount(0);
 
-    expect(bankAccount.transfer(100, anotherBankAccount).getBalance()).toBe(900);
+    expect(bankAccount.transfer(100, anotherBankAccount).getBalance()).toBe(
+      900,
+    );
     expect(anotherBankAccount.getBalance()).toBe(100);
   });
 
@@ -76,6 +84,8 @@ describe('BankAccount', () => {
 
     const bankAccount = getBankAccount(1000);
 
-    await expect(bankAccount.synchronizeBalance()).rejects.toThrow(new SynchronizationFailedError());
+    await expect(bankAccount.synchronizeBalance()).rejects.toThrow(
+      new SynchronizationFailedError(),
+    );
   });
 });

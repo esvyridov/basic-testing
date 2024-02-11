@@ -48,7 +48,7 @@ describe('throttledGetDataFromApi', () => {
 
   test('should return response data', async () => {
     const getMock = jest.fn().mockResolvedValue({
-      data: 'Hello!'
+      data: 'Hello!',
     });
     const createMock = jest.fn().mockReturnValue({
       get: getMock,
